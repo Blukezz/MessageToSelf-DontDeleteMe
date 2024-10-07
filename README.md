@@ -35,6 +35,7 @@ Configuration = {
 	Animations = true,
 	WaitTime = 0.22,
 	TeleportOffsetRadius = 20,
+	TeleportOffset = Vector3.new(0, -169, 0),
 	NoCollisions = true,
 	AntiVoiding = true,
 	SetSimulationRadius = true,
