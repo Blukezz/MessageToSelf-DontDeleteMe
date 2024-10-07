@@ -124,6 +124,10 @@ local Hats = {
 - Warning: Setting it to low might cause additional yielding, and setting it on high will depend on your simulation radius.
 - Description: Determinates the radius of teleporting the real rig close to fake rig to claim hats.
 
+### TeleportOffset
+- Arguments: Vector3 `[ Vector3.new() ]`
+- Description: Offsets the teleporting of the real rig by the positioning value given.
+
 ### NoCollisions
 - Arguments: Boolean `[ true / false ]`
 - Warning: In some cases you might get automatically under the map due to your collisions being barely there
