@@ -12,7 +12,7 @@ local RigName = Configuration.RigName or "Evolution, it must've passed you by."
 
 local WaitTime = Configuration.WaitTime or 0.25
 local TeleportOffsetRadius = Configuration.TeleportOffsetRadius or 12
-local TeleportOffsetVector = Configuration.TeleportOffset or Vector3.new()
+local TeleportOffsetVector = Configuration.TeleportOffset or nil
 
 local Flinging = Configuration.Flinging or true
 local PresetFling = Flinging and Configuration.PresetFling or nil
@@ -702,7 +702,11 @@ local function ConnectHats(Part0, Part1, Offset) -- : nil
 end
 
 local function GetRandomRadius() -- : Vector3
-	return Vector3.new(math.random(-TeleportOffsetRadius, TeleportOffsetRadius), 0.5, math.random(-TeleportOffsetRadius, TeleportOffsetRadius)) * TeleportOffsetVector
+	if TeleportOffsetVector then
+		return Vector3.new(math.random(-TeleportOffsetRadius, TeleportOffsetRadius), 0.5, math.random(-TeleportOffsetRadius, TeleportOffsetRadius)) * TeleportOffsetVector
+	else
+		return Vector3.new(math.random(-TeleportOffsetRadius, TeleportOffsetRadius), 0.5, math.random(-TeleportOffsetRadius, TeleportOffsetRadius))
+	end
 end
 
 local function ArePlayersNearby() -- : Boolean
