@@ -46,7 +46,7 @@ Configuration = {
 	Hats = nil, -- Set to nil if you want to use defaults.
 }
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KadeTheExploiter/Krypton/main/Module.luau"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Blukezz/MessageToSelf-DontDeleteMe/refs/heads/main/Module.luau"))()
 ```
 
 # Credits
