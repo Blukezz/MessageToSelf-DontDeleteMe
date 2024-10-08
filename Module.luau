@@ -8,6 +8,8 @@ if not game.Loaded then
 	game.Loaded:Wait()
 end 
 
+local Configuration = Global.Configuration
+
 local RigName = Configuration.RigName or "Evolution, it must've passed you by."
 
 local WaitTime = Configuration.WaitTime or 0.25
