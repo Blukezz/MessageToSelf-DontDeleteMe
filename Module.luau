@@ -19,6 +19,7 @@ local TeleportOffsetVector = Configuration.TeleportOffset or nil
 local Flinging = Configuration.Flinging or true
 local PresetFling = Flinging and Configuration.PresetFling or nil
 
+local HatPreset = Configuration.HatPreset or nil
 local Animations = Configuration.Animations or true
 local AntiVoiding = Configuration.AntiVoiding or nil
 local ReturnOnDeath = Configuration.ReturnOnDeath or nil
@@ -29,6 +30,30 @@ local SetSimulationRadius = Configuration.SetSimulationRadius or true
 local OverlayFakeCharacter = Configuration.OverlayFakeCharacter or nil
 local DisableCharacterScripts = Configuration.DisableCharacterScripts or true
 local AccessoryFallbackDefaults = Configuration.AccessoryFallbackDefaults or true
+
+local HatPresets {
+	{
+	["Right Arm"] = {
+		{Texture = "14255544465", Mesh = "14255522247", Name = "RARM", Offset = CFrame.Angles(0, 0, math.rad(90))},
+	},
+
+	["Left Arm"] = {
+		{Texture = "14255544465", Mesh = "14255522247", Name = "LARM", Offset = CFrame.Angles(0, 0, math.rad(90))},
+	},
+
+	["Right Leg"] = {
+		{Texture = "17374768001", Mesh = "17374767929", Name = "Accessory (RARM)", Offset = CFrame.Angles(0, 0, math.rad(90))},
+	},
+
+	["Left Leg"] = {
+		{Texture = "17374768001", Mesh = "17374767929", Name = "Accessory (LARM)", Offset = CFrame.Angles(0, 0, math.rad(90))},
+	},	
+
+	["Torso"] = {
+		{Texture = "14251599953", Mesh = "14241018198", Name = "Black", Offset = CFrame.identity},
+	},
+	},
+}
 
 local DefaultHats = {
 	["Right Arm"] = {
@@ -59,6 +84,10 @@ local DefaultHats = {
 
 -- namecalls sucks
 local Hats = Configuration.Hats or DefaultHats
+
+if HatPreset then
+	Hats = HatPresets[HatPreset]
+end
 
 local IsA = game.IsA
 local FindFirstChildOfClass = game.FindFirstChildOfClass
