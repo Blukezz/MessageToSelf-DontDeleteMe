@@ -31,7 +31,7 @@ local OverlayFakeCharacter = Configuration.OverlayFakeCharacter or nil
 local DisableCharacterScripts = Configuration.DisableCharacterScripts or true
 local AccessoryFallbackDefaults = Configuration.AccessoryFallbackDefaults or true
 
-local HatPresets {
+local HatPresets = {
 	{
 	["Right Arm"] = {
 		{Texture = "14255544465", Mesh = "14255522247", Name = "RARM", Offset = CFrame.Angles(0, 0, math.rad(90))},
