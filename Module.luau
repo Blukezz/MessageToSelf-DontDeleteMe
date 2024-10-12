@@ -1208,7 +1208,7 @@ Global.KadeAPI = {
 		for _, Signal in TempSignals do
 			Signal:Disconnect()
 		end
-	end
+	end,
 
 	OnCancelScript = function(Callback)
 		CancelScriptCallback = Callback
