@@ -140,6 +140,7 @@ if FindFirstChild(Terrain, RigName) then
 end
 
 local RespawnEvent = Instance.new("BindableEvent")
+local CancelEvent = Instance.new("BindableEvent")
 
 local TeleportOffset = Vector3.zero
 local ReverseSleep = TeleportOffset
@@ -149,7 +150,6 @@ local CameraHandle = nil
 local MouseDown = nil
 local SpaceDown = nil
 local AnimationHandlingFunction = nil
-local CancelScriptCallback = nil
 
 local KeyInputs = {[Enum.KeyCode.W] = {nil, 0, -1}, [Enum.KeyCode.A] = {nil, -1, 0}, [Enum.KeyCode.S] = {nil, 0, 1}, [Enum.KeyCode.D] = {nil, 1, 0}}
 local HatsWithDifferentAligns = {}
@@ -221,9 +221,7 @@ local function CancelScript()  -- : nil
 		end
 	end
 
-	if CancelScriptCallback then
-		CancelScriptCallback()
-	end
+	CancelEvent:Fire()
 end
 
 do -- [[ Scoped Rig Creating. ]]
@@ -1210,7 +1208,7 @@ Global.KadeAPI = {
 		end
 	end,
 
-	OnCancelScript = function(Callback)
-		CancelScriptCallback = Callback
+	GetCancelEvent = function()
+		return CancelEvent
 	end
 }
