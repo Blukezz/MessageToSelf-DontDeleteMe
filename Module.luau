@@ -9,6 +9,7 @@ if not game.Loaded then
 end 
 
 local Configuration = Global.Configuration
+local CustomHats = Global.CustomHats
 
 local RigName = Configuration.RigName or "Evolution, it must've passed you by."
 
@@ -22,6 +23,7 @@ local PresetFling = Flinging and Configuration.PresetFling or nil
 local HatPreset = Configuration.HatPreset or nil
 local Animations = Configuration.Animations or true
 local AntiVoiding = Configuration.AntiVoiding or nil
+local UseCustomHats = Configuration.UseCustomHats or false
 local ReturnOnDeath = Configuration.ReturnOnDeath or nil
 local ForceMobileMode = Configuration.ForceMobileMode or nil
 local ForceDesktopMode = Configuration.ForceDesktopMode or nil
@@ -32,26 +34,47 @@ local DisableCharacterScripts = Configuration.DisableCharacterScripts or true
 local AccessoryFallbackDefaults = Configuration.AccessoryFallbackDefaults or true
 
 local HatPresets = {
-	{
-	["Right Arm"] = {
-		{Texture = "14255544465", Mesh = "14255522247", Name = "RARM", Offset = CFrame.Angles(0, 0, math.rad(90))},
-	},
+	["Default"] = {
+		["Right Arm"] = {
+			{Texture = "14255544465", Mesh = "14255522247", Name = "RARM", Offset = CFrame.Angles(0, 0, math.rad(90))},
+		},
 
-	["Left Arm"] = {
-		{Texture = "14255544465", Mesh = "14255522247", Name = "LARM", Offset = CFrame.Angles(0, 0, math.rad(90))},
-	},
+		["Left Arm"] = {
+			{Texture = "14255544465", Mesh = "14255522247", Name = "LARM", Offset = CFrame.Angles(0, 0, math.rad(90))},
+		},
 
-	["Right Leg"] = {
-		{Texture = "17374768001", Mesh = "17374767929", Name = "Accessory (RARM)", Offset = CFrame.Angles(0, 0, math.rad(90))},
-	},
+		["Right Leg"] = {
+			{Texture = "17374768001", Mesh = "17374767929", Name = "Accessory (RARM)", Offset = CFrame.Angles(0, 0, math.rad(90))},
+		},
 
-	["Left Leg"] = {
-		{Texture = "17374768001", Mesh = "17374767929", Name = "Accessory (LARM)", Offset = CFrame.Angles(0, 0, math.rad(90))},
-	},	
+		["Left Leg"] = {
+			{Texture = "17374768001", Mesh = "17374767929", Name = "Accessory (LARM)", Offset = CFrame.Angles(0, 0, math.rad(90))},
+		},	
 
-	["Torso"] = {
-		{Texture = "14251599953", Mesh = "14241018198", Name = "Black", Offset = CFrame.identity},
+		["Torso"] = {
+			{Texture = "14251599953", Mesh = "14241018198", Name = "Black", Offset = CFrame.identity},
+		},
 	},
+	["Free"] = {
+		["Right Arm"] = {
+			{Texture = "4645402630", Mesh = "3030546036", Name = "International Fedora", Offset = CFrame.Angles(math.rad(-90), 0, math.rad(90))}
+		},
+
+		["Left Arm"] = {
+			{Texture = "3650139425", Mesh = "3030546036", Name = "International Fedora", Offset = CFrame.Angles(math.rad(-90), 0, math.rad(-90))}
+		},
+
+		["Right Leg"] = {
+			{Texture = "4622077774", Mesh = "3030546036", Name = "International Fedora", Offset = CFrame.Angles(math.rad(-90), 0, math.rad(90))}
+		},
+
+		["Left Leg"] = {
+			{Texture = "3860099469", Mesh = "3030546036", Name = "InternationalFedora", Offset = CFrame.Angles(math.rad(-90), 0, math.rad(-90))}
+		},	
+
+		["Torso"] = {
+			{Texture = "4819722776", Mesh = "4819720316", Name = "MeshPartAccessory", Offset = CFrame.Angles(0, 0, math.rad(-15))}
+		},
 	},
 }
 
@@ -85,7 +108,9 @@ local DefaultHats = {
 -- namecalls sucks
 local Hats = Configuration.Hats or DefaultHats
 
-if HatPreset then
+if UseCustomHats then
+	Hats = CustomHats
+elseif HatPreset then
 	Hats = HatPresets[HatPreset]
 end
 
