@@ -207,6 +207,7 @@ local FakeRigChildren = {}
 local FakeRoot = nil
 
 local function CancelScript()  -- : nil
+	CancelEvent:Fire()
 	local Pos = FakeRoot.CFrame
 	
 	CameraHandle:Disconnect()
@@ -245,8 +246,6 @@ local function CancelScript()  -- : nil
 			Root.CFrame = Pos
 		end
 	end
-
-	CancelEvent:Fire()
 end
 
 do -- [[ Scoped Rig Creating. ]]
